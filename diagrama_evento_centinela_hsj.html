@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evento Centinela — Hospital San José</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'IBM Plex Sans', Verdana, sans-serif;
+    background: #0a1f22;
+    color: #e8f4f5;
+    min-height: 100vh;
+    padding: 28px 18px 48px;
+  }
+  .header { text-align: center; margin-bottom: 28px; }
+  .header .inst {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: #73FFFF; margin-bottom: 6px;
+  }
+  .header h1 { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.4; }
+  .header .sub { font-size: 11px; color: #39A8AD; margin-top: 4px; font-weight: 300; }
+
+  .flow { display: flex; flex-direction: column; gap: 0; max-width: 880px; margin: 0 auto; }
+
+  .arrow-down {
+    display: flex; justify-content: center; align-items: center;
+    height: 32px; position: relative;
+  }
+  .arrow-down::before {
+    content: ''; position: absolute;
+    width: 2px; height: 100%;
+    background: linear-gradient(to bottom, #39A8AD, #00666B);
+  }
+  .arrow-down::after {
+    content: ''; position: absolute;
+    width: 10px; height: 10px;
+    border-right: 2.5px solid #73FFFF;
+    border-bottom: 2.5px solid #73FFFF;
+    transform: rotate(45deg);
+    z-index: 1; margin-top: 12px;
+  }
+
+  .centinela {
+    background: linear-gradient(135deg, #8B0000 0%, #c0392b 100%);
+    border: 2px solid #ff6b6b; border-radius: 12px;
+    padding: 16px 22px; text-align: center;
+    box-shadow: 0 0 32px rgba(192,57,43,0.5);
+  }
+  .centinela .tag { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #ffcccc; margin-bottom: 6px; }
+  .centinela h2 { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.4; }
+
+  .falla-inm {
+    background: linear-gradient(135deg, #5c2a00, #8B4513);
+    border: 1.5px solid #e67e22; border-radius: 10px;
+    padding: 13px 18px; text-align: center;
+    box-shadow: 0 4px 16px rgba(230,126,34,0.2);
+  }
+  .falla-inm .tag { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; color: #ffd9a0; margin-bottom: 5px; }
+  .falla-inm p { font-size: 12px; color: #ffe8cc; line-height: 1.5; }
+
+  .sec-label {
+    text-align: center; font-size: 8.5px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: #39A8AD; margin: 14px 0 8px;
+  }
+
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; }
+
+  .fbox { border-radius: 10px; padding: 13px 12px; border: 1.5px solid; }
+  .fbox.t1 { background: rgba(0,102,107,0.25); border-color: #00666B; }
+  .fbox.t2 { background: rgba(57,168,173,0.2); border-color: #39A8AD; }
+  .fbox.t3 { background: rgba(0,51,57,0.4); border-color: #1a7a7e; }
+  .fbox .ftag { font-size: 8.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .fbox.t1 .ftag { color: #73FFFF; }
+  .fbox.t2 .ftag { color: #39A8AD; }
+  .fbox.t3 .ftag { color: #88d4d6; }
+  .fbox ul { list-style: none; }
+  .fbox ul li { font-size: 10px; color: #b0d8da; line-height: 1.55; padding-left: 11px; position: relative; margin-bottom: 2px; }
+  .fbox ul li::before { content: '▸'; position: absolute; left: 0; color: #73FFFF; font-size: 8px; top: 2px; }
+
+  .barreras {
+    background: rgba(100,20,20,0.3); border: 1.5px solid #c0392b;
+    border-radius: 10px; padding: 14px 18px;
+  }
+  .barreras .btag { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #ffaaaa; margin-bottom: 8px; }
+  .barreras ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 16px; }
+  .barreras ul li { font-size: 10px; color: #f5c6c6; padding-left: 14px; position: relative; line-height: 1.5; }
+  .barreras ul li::before { content: '✕'; position: absolute; left: 0; color: #ff6b6b; font-size: 9px; font-weight: 700; }
+
+  .causas {
+    background: rgba(0,25,50,0.5); border: 2px solid #003339;
+    border-radius: 10px; padding: 14px 18px; position: relative; overflow: hidden;
+  }
+  .causas::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, #39A8AD, #73FFFF, #00666B);
+  }
+  .causas .ctag { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #73FFFF; margin-bottom: 8px; }
+  .causas-list { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 18px; }
+  .causa-item { display: flex; align-items: flex-start; gap: 8px; }
+  .causa-num {
+    background: #39A8AD; color: #001a1c; font-size: 10px; font-weight: 700;
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .causa-item p { font-size: 10px; color: #cce8ea; line-height: 1.5; }
+
+  .mbox { border-radius: 10px; padding: 13px 12px; border: 1.5px solid; }
+  .mbox.cp { background: rgba(0,102,107,0.3); border-color: #00666B; }
+  .mbox.mp { background: rgba(57,168,173,0.2); border-color: #39A8AD; }
+  .mbox.lp { background: rgba(115,255,255,0.07); border-color: #73FFFF; }
+  .mbox .mtag { font-size: 8px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; }
+  .mbox.cp .mtag { color: #73FFFF; }
+  .mbox.mp .mtag { color: #39A8AD; }
+  .mbox.lp .mtag { color: #73FFFF; }
+  .mbox .mplazo { font-size: 11px; font-weight: 700; color: #e0f5f5; margin-bottom: 6px; }
+  .mbox ul { list-style: none; }
+  .mbox ul li { font-size: 10px; color: #a8d8da; line-height: 1.5; padding-left: 11px; position: relative; margin-bottom: 2px; }
+  .mbox ul li::before { content: '→'; position: absolute; left: 0; color: #73FFFF; font-size: 9px; }
+
+  .footer-note { text-align: center; font-size: 9px; color: #39A8AD; margin-top: 28px; letter-spacing: 1px; opacity: 0.7; }
+
+  @media (max-width: 620px) {
+    .grid3, .grid2, .causas-list, .barreras ul { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .centinela { background: #c0392b; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="inst">Hospital San José · Servicio de Urgencia · Subdirección de Gestión Clínica</div>
+  <h1>Análisis de Evento Centinela — Muerte en Sala de Espera</h1>
+  <div class="sub">Diagrama causal · Investigación y medidas correctivas</div>
+</div>
+
+<div class="flow">
+
+  <!-- 1. EVENTO CENTINELA -->
+  <div class="centinela">
+    <div class="tag">⚠ Evento Centinela</div>
+    <h2>Paciente fallece en sala de espera antes de ser evaluado médicamente</h2>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- 2. FALLA INMEDIATA -->
+  <div class="falla-inm">
+    <div class="tag">Falla Inmediata Identificada</div>
+    <p>Paciente permaneció <strong>&gt;6 horas sin evaluación médica</strong> ni reevaluación clínica efectiva</p>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- 3. TIPOLOGÍA DE FALLAS -->
+  <div class="sec-label">Tipología de Fallas Contributivas</div>
+  <div class="grid3">
+    <div class="fbox t1">
+      <div class="ftag">Fallas de Triage</div>
+      <ul>
+        <li>ESI 3 posiblemente subestimó el riesgo real</li>
+        <li>Triage estático sin recategorización dinámica</li>
+        <li>Sin reevaluación periódica protocolizada</li>
+        <li>Deterioro clínico no detectado oportunamente</li>
+      </ul>
+    </div>
+    <div class="fbox t2">
+      <div class="ftag">Fallas de Flujo</div>
+      <ul>
+        <li>Traslado directo ambulancia → sala de espera</li>
+        <li>Boxes ocupados, sin capacidad de absorción</li>
+        <li>Sin vigilancia clínica activa en sala de espera</li>
+        <li>Riesgo no escalado · espera sin control</li>
+      </ul>
+    </div>
+    <div class="fbox t3">
+      <div class="ftag">Fallas Organizacionales</div>
+      <ul>
+        <li>Sobresaturación del servicio de urgencia</li>
+        <li>Boarding: boxes amb. con pacientes hospitalizados</li>
+        <li>Demanda supera capacidad instalada</li>
+        <li>Fatiga de personal · incumplimiento de tiempos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- 4. BARRERAS FALLIDAS -->
+  <div class="barreras">
+    <div class="btag">✕ &nbsp;Barreras de Seguridad que Fallaron</div>
+    <ul>
+      <li>Reevaluación periódica inexistente o insuficiente</li>
+      <li>Sin monitoreo clínico en sala de espera</li>
+      <li>Sin alertas por tiempo excesivo de espera</li>
+      <li>Sin recategorización dinámica disponible</li>
+      <li>Falta de supervisión activa de pacientes en espera</li>
+      <li>Protocolos ambiguos para pacientes en ambulancia</li>
+      <li>Gestión insuficiente de contingencia por saturación</li>
+    </ul>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- 5. CAUSAS RAÍZ -->
+  <div class="causas">
+    <div class="ctag">◆ &nbsp;Causas Raíz</div>
+    <div class="causas-list">
+      <div class="causa-item">
+        <span class="causa-num">1</span>
+        <p>Ausencia de sistema seguro de reevaluación de pacientes en espera prolongada</p>
+      </div>
+      <div class="causa-item">
+        <span class="causa-num">2</span>
+        <p>Gestión insuficiente del riesgo asociado a saturación crítica del servicio</p>
+      </div>
+      <div class="causa-item">
+        <span class="causa-num">3</span>
+        <p>Incumplimiento o debilidad del protocolo para pacientes trasladados en ambulancia</p>
+      </div>
+      <div class="causa-item">
+        <span class="causa-num">4</span>
+        <p>Dependencia excesiva de categorización inicial sin seguimiento evolutivo</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow-down"></div>
+
+  <!-- 6. MEDIDAS CORRECTIVAS -->
+  <div class="sec-label">Medidas Correctivas por Horizonte Temporal</div>
+  <div class="grid3">
+    <div class="mbox cp">
+      <div class="mtag">Plazo</div>
+      <div class="mplazo">Corto Plazo</div>
+      <ul>
+        <li>Reevaluación obligatoria protocolo actualizado</li>
+        <li>Alertas automáticas por espera &gt;4 horas</li>
+        <li>Signos vitales seriados con recategorización</li>
+        <li>Validación médica antes de sala de espera</li>
+        <li>Rondas de Trabajadora Social para detección de riesgo</li>
+      </ul>
+    </div>
+    <div class="mbox mp">
+      <div class="mtag">Plazo</div>
+      <div class="mplazo">Mediano Plazo</div>
+      <ul>
+        <li>Tablero de riesgo por tiempos de espera</li>
+        <li>Protocolos de recategorización dinámica</li>
+        <li>Escalamiento obligatorio en saturación crítica</li>
+      </ul>
+    </div>
+    <div class="mbox lp">
+      <div class="mtag">Plazo</div>
+      <div class="mplazo">Largo Plazo</div>
+      <ul>
+        <li>Ampliación de capacidad hospitalaria</li>
+        <li>Reducción del boarding en urgencia</li>
+        <li>Sistemas digitales de vigilancia clínica</li>
+        <li>Indicadores institucionales de seguridad</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-note">Hospital San José · Servicio de Urgencia · Análisis de Seguridad Clínica</div>
+
+</body>
+</html>

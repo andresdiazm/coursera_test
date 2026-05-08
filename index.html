@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repositorio GPC Urgencia - HSJ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="eyebrow">Hospital San Jose · Urgencia</p>
+      <h1>Repositorio de resumenes clinicos abreviados</h1>
+      <p class="lead">Documentos HTML para consulta rapida, organizados por tematica, version y fecha.</p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="toolbar" aria-label="Busqueda y filtros">
+      <label class="search-box">
+        <span>Buscar</span>
+        <input id="searchInput" type="search" placeholder="Diagnostico, score, tematica o palabra clave" autocomplete="off">
+      </label>
+
+      <div class="filter-row">
+        <label>
+          <span>Tematica</span>
+          <select id="topicFilter">
+            <option value="todas">Todas</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Tipo</span>
+          <select id="typeFilter">
+            <option value="todos">Todos</option>
+          </select>
+        </label>
+
+        <button id="clearButton" type="button">Limpiar</button>
+      </div>
+    </section>
+
+    <section class="summary" aria-label="Resumen del repositorio">
+      <div>
+        <strong id="totalCount">0</strong>
+        <span>documentos</span>
+      </div>
+      <div>
+        <strong id="topicCount">0</strong>
+        <span>tematicas</span>
+      </div>
+      <div>
+        <strong id="updatedAt">-</strong>
+        <span>ultima fecha</span>
+      </div>
+    </section>
+
+    <section class="results-head">
+      <h2>Documentos disponibles</h2>
+      <p id="resultCount">Cargando documentos...</p>
+    </section>
+
+    <section id="documentGrid" class="document-grid" aria-live="polite"></section>
+
+    <section id="emptyState" class="empty-state" hidden>
+      <h2>Sin resultados</h2>
+      <p>Prueba con otra palabra clave o quita algun filtro.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Mantenedor: mantenedor_documentos.xlsx</span>
+    <span>Fuente: archivos HTML locales de esta carpeta</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "GPC-001",
+    "titulo": "Evento Centinela - Hospital San Jose",
+    "tematica": "Seguridad del paciente",
+    "archivo": "diagrama_evento_centinela_hsj.html",
+    "version": "1.0",
+    "fecha": "2026-05-07",
+    "tipo": "Diagrama",
+    "estado": "Vigente",
+    "descripcion": "Flujo abreviado para evento centinela, falla inmediata y acciones de respuesta institucional.",
+    "palabrasClave": ["evento centinela", "seguridad", "notificacion", "urgencia", "hospital san jose"]
+  },
+  {
+    "id": "GPC-002",
+    "titulo": "HDA / HDB - Manejo Inicial Urgencia",
+    "tematica": "Gastroenterologia",
+    "archivo": "infografia_hda_hdb_HSJ.html",
+    "version": "1.0",
+    "fecha": "2026-05-06",
+    "tipo": "Infografia",
+    "estado": "Vigente",
+    "descripcion": "Resumen clinico abreviado para manejo inicial de hemorragia digestiva alta y baja en urgencia.",
+    "palabrasClave": ["hda", "hdb", "hemorragia digestiva", "gastroenterologia", "urgencia"]
+  },
+  {
+    "id": "GPC-003",
+    "titulo": "ITU en Urgencia - Hospital San Jose",
+    "tematica": "Infectologia",
+    "archivo": "infografia_itu_hsj_HSJ.html",
+    "version": "1.0",
+    "fecha": "2026-05-06",
+    "tipo": "Infografia",
+    "estado": "Vigente",
+    "descripcion": "Guia rapida para infeccion del tracto urinario en contexto de atencion de urgencia.",
+    "palabrasClave": ["itu", "infeccion urinaria", "pielonefritis", "antibioticos", "urgencia"]
+  },
+  {
+    "id": "GPC-004",
+    "titulo": "Neumonia - Manejo Inicial Urgencia",
+    "tematica": "Respiratorio",
+    "archivo": "infografia_neumonia_HSJ.html",
+    "version": "1.0",
+    "fecha": "2026-05-06",
+    "tipo": "Infografia",
+    "estado": "Vigente",
+    "descripcion": "Manejo inicial abreviado de neumonia en urgencia, con enfoque clinico y criterios de evaluacion.",
+    "palabrasClave": ["neumonia", "respiratorio", "antibioticos", "triage", "urgencia"]
+  },
+  {
+    "id": "GPC-005",
+    "titulo": "Scores en Urgencia - Hospital San Jose",
+    "tematica": "Herramientas clinicas",
+    "archivo": "infografia_scores_urgencia_HSJ.html",
+    "version": "1.0",
+    "fecha": "2026-05-06",
+    "tipo": "Infografia",
+    "estado": "Vigente",
+    "descripcion": "Compendio de scores clinicos utiles para evaluacion y estratificacion en urgencia.",
+    "palabrasClave": ["scores", "escalas", "riesgo", "triage", "urgencia"]
+  },
+  {
+    "id": "GPC-006",
+    "titulo": "TEP 2026 - Nueva Clasificacion",
+    "tematica": "Respiratorio",
+    "archivo": "infografia_tep_HSJ_final.html",
+    "version": "1.0",
+    "fecha": "2026-05-06",
+    "tipo": "Infografia",
+    "estado": "Vigente",
+    "descripcion": "Resumen actualizado para tromboembolismo pulmonar, clasificacion 2026 y aproximacion inicial.",
+    "palabrasClave": ["tep", "tromboembolismo pulmonar", "respiratorio", "riesgo", "urgencia"]
+  }
+]
