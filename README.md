@@ -2,6 +2,8 @@
 
 Sitio estatico para alojar y buscar resumenes clinicos abreviados en formato HTML.
 
+Publicado en el repositorio `andresdiazm/coursera_test`.
+
 ## Archivos principales
 
 - `index.html`: pagina de inicio del repositorio.
