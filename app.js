@@ -86,8 +86,8 @@ function renderCards(documents) {
         <span><strong>Estado:</strong> ${doc.estado}</span>
       </div>
       <div class="doc-actions">
-        <a href="${doc.archivo}">Abrir</a>
-        <a href="${doc.archivo}" target="_blank" rel="noopener">Nueva pestana</a>
+        <a href="${doc.archivo}">Abrir ficha</a>
+        <a href="${doc.archivo}" target="_blank" rel="noopener">Nueva pesta&ntilde;a</a>
       </div>
     `;
     els.grid.append(card);
